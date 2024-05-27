@@ -1,5 +1,4 @@
 mod body;
-mod vectors;
 
 use body::vectors::_3DVector;
 use body::Body;
@@ -67,8 +66,8 @@ fn main() {
         body_2.velocity += dt_time * (-g12 + g23) / body_2.mass;
         body_3.velocity += dt_time * (-g13 - g23) / body_3.mass;
 
-        body_1.pos = body_1.pos + (dt_time * body_1.velocity);
-        body_2.pos = body_2.pos + (dt_time * body_2.velocity);
-        body_3.pos = body_3.pos + (dt_time * body_3.velocity);
+        body_1.pos += dt_time * body_1.velocity;
+        body_2.pos += dt_time * body_2.velocity;
+        body_3.pos += dt_time * body_3.velocity;
     }
 }

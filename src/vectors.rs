@@ -9,7 +9,7 @@ pub struct _3DVector {
 }
 
 impl _3DVector {
-    pub fn unitary(self: Self) -> _3DVector {
+    pub fn unitary(self: _3DVector) -> _3DVector {
         let length = (self * self).powf(0.5f64);
         _3DVector {
             x: self.x / length,
@@ -30,7 +30,7 @@ impl fmt::Debug for _3DVector {
 
 impl ops::Add<_3DVector> for _3DVector {
     type Output = _3DVector;
-    fn add(self: Self, other: _3DVector) -> _3DVector {
+    fn add(self: _3DVector, other: _3DVector) -> _3DVector {
         _3DVector {
             x: self.x + other.x,
             y: self.y + other.y,
@@ -41,7 +41,7 @@ impl ops::Add<_3DVector> for _3DVector {
 
 impl ops::Sub<_3DVector> for _3DVector {
     type Output = _3DVector;
-    fn sub(self: Self, other: _3DVector) -> _3DVector {
+    fn sub(self: _3DVector, other: _3DVector) -> _3DVector {
         _3DVector {
             x: self.x - other.x,
             y: self.y - other.y,
@@ -52,14 +52,14 @@ impl ops::Sub<_3DVector> for _3DVector {
 
 impl ops::Mul<_3DVector> for _3DVector {
     type Output = f64;
-    fn mul(self: Self, other: _3DVector) -> f64 {
+    fn mul(self: _3DVector, other: _3DVector) -> f64 {
         self.x * other.y + self.y * other.y + self.z * other.z
     }
 }
 
 impl ops::Mul<_3DVector> for f64 {
     type Output = _3DVector;
-    fn mul(self: Self, other: _3DVector) -> _3DVector {
+    fn mul(self: f64, other: _3DVector) -> _3DVector {
         _3DVector {
             x: other.x * self,
             y: other.y * self,
@@ -70,14 +70,14 @@ impl ops::Mul<_3DVector> for f64 {
 
 impl ops::Mul<f64> for _3DVector {
     type Output = _3DVector;
-    fn mul(self: Self, other: f64) -> _3DVector {
+    fn mul(self: _3DVector, other: f64) -> _3DVector {
         other * self
     }
 }
 
 impl ops::Neg for _3DVector {
     type Output = _3DVector;
-    fn neg(self: Self) -> _3DVector {
+    fn neg(self: _3DVector) -> _3DVector {
         _3DVector {
             x: -self.x,
             y: -self.y,
@@ -114,7 +114,7 @@ impl ops::DivAssign<f64> for _3DVector {
 }
 
 impl ops::SubAssign for _3DVector {
-    fn sub_assign(&mut self, rhs: Self) {
+    fn sub_assign(&mut self, rhs: _3DVector) {
         self.x -= rhs.x;
         self.y -= rhs.y;
         self.z -= rhs.z;
